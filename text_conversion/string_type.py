@@ -3,7 +3,7 @@
 Tools for working with string data types.
 
 Particularly useful for enforcing bytes or unicode string types in 
-Python2 and Python 3.
+Python 2 and Python 3.
 
 Based on Effective Python (Item 3) by Brett Slatkin.
 """
@@ -11,14 +11,16 @@ Based on Effective Python (Item 3) by Brett Slatkin.
 import sys
 
 
-if (sys.version_info > (3, 0)):
-    ### Python 3 ###
+if (sys.version_info > (3, 0)):  
+    """
+    Python 3
+    NOTE: In Python 3 <str> is Unicode and bytes have to be declared (b'...').
+    NOTE: Default encoding in Python 3 is UTF-8.
+    """
 
     def to_str(bytes_or_str):
         """
         Take a bytes string or a unicode string and always return a unicode string.
-        In Python 3 <str> is Unicode and bytes have to be declared (b'...').
-        NOTE: Default encoding in Python 3 is UTF-8.
         """
         if isinstance(bytes_or_str, bytes):
             # A bytes string - decode to unicode
@@ -31,8 +33,6 @@ if (sys.version_info > (3, 0)):
     def to_bytes(bytes_or_str):
         """
         Take a bytes string or a unicode string and always return a bytes string.
-        In Python 3 <str> is Unicode and bytes have to be declared (b'...').
-        NOTE: Default encoding in Python 3 is UTF-8.
         """
         if isinstance(bytes_or_str, str):
             # Unicode - encode to bytes
@@ -43,12 +43,15 @@ if (sys.version_info > (3, 0)):
         return value 
 
 else:
-    ### Python 2 ###
+    """
+    Python 2
+    NOTE: In Python 2 <str> is bytes and unicode have to be declared (u'...').
+    NOTE: Default encoding in Python 2 is ASCII.
+    """
+
     def to_unicode(unicode_or_str):
         """
-        Take a bytes string or a unicode string and always return a unicode string.
-        In Python 2 <str> is bytes and unicode has to be declared (u'...').
-        NOTE: Default encoding in Python 2 is ASCII.
+        Take a bytes string or a unicode string and always return a unicode string.        
         """
         if isinstance(unicode_or_str, str):
             # A bytes string - decode to unicode
@@ -61,8 +64,6 @@ else:
     def to_str(unicode_or_str):
         """
         Take a bytes string or a unicode string and always return a bytes string.
-        In Python 2 <str> is bytes and unicode has to be declared (u'...').
-        NOTE: Default encoding in Python 2 is ASCII.
         """
         if isinstance(unicode_or_str, unicode):
             # A unicode string - encode to bytes
