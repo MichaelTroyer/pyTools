@@ -77,5 +77,3 @@ if __name__ == '__main__':
     pic_path = r'..\Documents\pic2.jpg'
     gps = getCoords(pic_path)
     print gps
-#    folder = r'U:\Troyer\a-Projects\crrg18053p_Fishermans_Bridge_Ruby_Mtn\Resources\20180703_Photos'
-#    picsToCoordCSV(folder)
